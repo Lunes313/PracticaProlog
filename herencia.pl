@@ -1,8 +1,11 @@
-% Caso base
+% casoPrueba1
 parent(loo, juan).
 parent(loo, ana).
 parent(valeria, loo).
 parent(carlos, loo).
+% casoPrueba2
+parent(adrian, gorge).
+parent(gorge, susi).
 % Primer caso
 parent(marta, juan).
 parent(marta, ana).
@@ -18,6 +21,10 @@ sibling(sofia, roberto).
 % Segundo caso
 grandparent(juan, jorge).
 grandparent(maria, jorge).
+% casoPrueba2
+grandparent(josua, gorge).
+grandparent(helena, gorge).
+% Segundo caso
 uncle(luis, jorge).
 uncle(pedro, jorge).
 aunt(rosa, jorge).
@@ -26,8 +33,8 @@ cousin(marta, carlos).
 % Tercer caso
 cousin(sofia, julia). 
 cousin(sofia, felipe).
-% caso base
-cousin(sofia, loo).
+% casoPrueba2
+aunt(mary, gorge).
 
 % Niveles de consanguinidad
 levelConsanguinity(X, Y, 1) :- parent(X, Y); parent(Y, X).
@@ -79,9 +86,9 @@ distributeInheritance(X, Total, Distribution) :-
 
     % Asignacion de la distribucion final
     Distribution = [
-        primer_nivel(InheritanceFirstLevel*len1),
-        segundo_nivel(InheritanceSecondLevel*len2),
-        tercer_nivel(InheritanceThirdLevel*len3)
+        primer_nivel(InheritanceFirstLevel*Len1),
+        segundo_nivel(InheritanceSecondLevel*Len2),
+        tercer_nivel(InheritanceThirdLevel*Len3)
     ].
 
 % Funcion para imprimir la lista
