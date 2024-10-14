@@ -5,9 +5,11 @@
 - Johan Samuel Rico Nivia
 
 _<sub>Código realizado para prolog</sub>_
+
 _<sub>El código se encuentra en el archivo `herencia.pl`</sub>_
 
 **Video**
+
 _<sub>el video se pondra proximamente en este espacio</sub>_
 
 **Introducción** 
