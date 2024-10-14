@@ -28,13 +28,13 @@ grandparent(helena, gorge).
 uncle(luis, jorge).
 uncle(pedro, jorge).
 aunt(rosa, jorge).
+% casoPrueba2
+aunt(mary, gorge).
 % Primer caso
 cousin(marta, carlos).
 % Tercer caso
 cousin(sofia, julia). 
 cousin(sofia, felipe).
-% casoPrueba2
-aunt(mary, gorge).
 
 % Niveles de consanguinidad
 levelConsanguinity(X, Y, 1) :- parent(X, Y); parent(Y, X).
@@ -43,6 +43,8 @@ levelConsanguinity(X, Y, 3) :- uncle(X, Y); aunt(X, Y); uncle(Y, X); aunt(Y, X);
 
 % Distribucion de la herencia
 distributeInheritance(X, Total, Distribution) :-
+
+    % Crea una lista con las personas en cada nivel de consanguinidad
     findall(Y, levelConsanguinity(X, Y, 1), FirstLevel),
     findall(Y, levelConsanguinity(X, Y, 2), SecondLevel),
     findall(Y, levelConsanguinity(X, Y, 3), ThirdLevel),
@@ -51,24 +53,31 @@ distributeInheritance(X, Total, Distribution) :-
     length(SecondLevel, Len2),
     length(ThirdLevel, Len3),
 
+    % Se asigna un porcentaje a cada nivel
     TotalFirstLevel is Len1 * 30,
     TotalSecondLevel is Len2 * 20,
     TotalThirdLevel is Len3 * 10,
 
+    % Se suman los porcentajes y luego se verifica si excede el 100%
     Sum is TotalFirstLevel + TotalSecondLevel + TotalThirdLevel,
+
     (Sum > 100 ->
+        % Si se excede el total se reajustan
         PercentFirstLevel is (TotalFirstLevel * 100) / Sum,
         PercentSecondLevel is (TotalSecondLevel * 100) / Sum,
         PercentThirdLevel is (TotalThirdLevel * 100) / Sum;
+        % Si no se continua con los anteriores
         PercentFirstLevel is TotalFirstLevel,
         PercentSecondLevel is TotalSecondLevel,
         PercentThirdLevel is TotalThirdLevel
     ),
 
+    % Se asigna un valor a cada nivel dependiendo de la cantidad de herencia enviada 
     TotalInheritanceFirstLevel is ((PercentFirstLevel / 100) * Total),
     TotalInheritanceSecondLevel is ((PercentSecondLevel / 100) * Total),
     TotalInheritanceThirdLevel is ((PercentThirdLevel / 100) * Total),
 
+    % Se imprimen las personas y su herencia asignada en cada nivel
     (Len1 > 0 ->
         InheritanceFirstLevel is TotalInheritanceFirstLevel / Len1,
         write('Primer nivel: '), nl, print_list(FirstLevel, InheritanceFirstLevel);
@@ -84,15 +93,17 @@ distributeInheritance(X, Total, Distribution) :-
         write('Tercer nivel: '), nl, print_list(ThirdLevel, InheritanceThirdLevel);
         InheritanceThirdLevel = 0),
 
-    % Asignacion de la distribucion final
+    % Se asigna a distribucion una lista que contiene los valores repartidos a cada persona del nivel seguidos por el total del valor en el nivel
     Distribution = [
-        primer_nivel(InheritanceFirstLevel*Len1),
-        segundo_nivel(InheritanceSecondLevel*Len2),
-        tercer_nivel(InheritanceThirdLevel*Len3)
+        primer_nivel(InheritanceFirstLevel , TotalInheritanceFirstLevel),
+        segundo_nivel(InheritanceSecondLevel, TotalInheritanceSecondLevel),
+        tercer_nivel(InheritanceThirdLevel, TotalInheritanceThirdLevel)
     ].
 
-% Funcion para imprimir la lista
+
+% funcion para imprimir 
 print_list([], _).
 print_list([Head | Tail], Value) :-
-    write(Head), write(' recibe: '), write(Value), nl,
+    format('~w recibe: ~2f~n', [Head, Value]),
     print_list(Tail, Value).
+
