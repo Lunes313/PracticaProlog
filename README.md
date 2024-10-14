@@ -10,7 +10,7 @@ _<sub>este código se encuentra en el archivo `herencia.pl`</sub>_
 
 **Video**
 
-_<sub>[Video](https://eafit-my.sharepoint.com/:v:/g/personal/jsricon_eafit_edu_co/EWhEAAjPXX9CnWu0wg0QXEkBugRD5_yFfhmsjOrqFTp89Q?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=BVqnUq)</sub>_
+_[Video Práctica 2 - Prolog](https://eafit-my.sharepoint.com/:v:/g/personal/jsricon_eafit_edu_co/EWhEAAjPXX9CnWu0wg0QXEkBugRD5_yFfhmsjOrqFTp89Q?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=BVqnUq)_
 
 **Introducción** 
 
